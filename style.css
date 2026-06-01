@@ -1,0 +1,139 @@
+/* ==========================================================================
+   IMPORTAÇÃO DE FONTE EXTERNA
+   ========================================================================== */
+/* Importa a fonte Raleway do Google Fonts com os pesos 400 (normal), 500 (médio) e 800 (negrito extra) */
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+
+
+/* ==========================================================================
+   ESTILIZAÇÃO DO BODY (CORPO DA PÁGINA)
+   ========================================================================== */
+body{
+    margin: 0;                   /* Remove todas as margens padrão do navegador */
+    height: 100vh;               /* Altura = 100% da altura da tela (viewport) */
+    background: #333;            /* Cor de fundo cinza escuro */
+    display: flex;               /* Ativa o Flexbox para facilitar o alinhamento */
+    justify-content: center;     /* Centraliza o conteúdo HORIZONTALMENTE */
+    align-items: center;         /* Centraliza o conteúdo VERTICALMENTE */
+    font-family: consolas;       /* Define a fonte monoespaçada Consolas como padrão */
+}
+
+
+/* ==========================================================================
+   CONTAINER PRINCIPAL DO CARD
+   ========================================================================== */
+.card {
+    position: relative;          /* Permite que elementos filhos absolutos se posicionem em relação a este container */
+    cursor: pointer;             /* Muda o cursor para "mãozinha" indicando que é clicável/interativo */
+    width: 300px;                /* Largura fixa de 300 pixels */
+}
+
+
+/* ==========================================================================
+   FACE 1 - PARTE DA FRENTE DO CARD (COM A IMAGEM E TÍTULO)
+   ========================================================================== */
+.face1{
+    position: relative;          /* Posicionamento relativo para ajustes finos */
+    width: 300px;                /* Mesma largura do card pai */
+    height: 200px;               /* Altura fixa de 200 pixels */
+    background-color: #333;      /* Fundo cinza escuro (mesmo do body) */
+    display: flex;               /* Ativa Flexbox para organizar o conteúdo interno */
+    flex-direction: column;      /* Organiza os filhos em COLUNA (um embaixo do outro) */
+    justify-content: center;     /* Centraliza os filhos VERTICALMENTE */
+    align-items: center;         /* Centraliza os filhos HORIZONTALMENTE */
+    transition: 0.5s;            /* Animação suave de 0.5 segundos para TODAS as propriedades que mudarem */
+    transform: translateY(100px);/* POSIÇÃO INICIAL: desloca a face 100 pixels para BAIXO */
+    z-index: 1;                  /* Define que esta face fica ACIMA da face2 (valor maior = mais à frente) */
+}
+
+/* EFEITO HOVER: quando o mouse passar sobre o card, a face1 se comporta assim: */
+.card:hover .face1{
+    background-color: #ff0057;     /* Muda a cor de fundo para ROSA / VERMELHO VIBRANTE */
+    transform: translateY(0);    /* Remove o deslocamento, trazendo a face para a POSIÇÃO ORIGINAL (encostando na face2) */
+}
+
+
+/* ==========================================================================
+   FACE 2 - PARTE DE TRÁS DO CARD (COM O TEXTO E BOTÃO)
+   ========================================================================== */
+.face2{
+    position: relative;          /* Posicionamento relativo */
+    width: 300px;                /* Mesma largura do card */
+    height: 200px;               /* Mesma altura da face1 */
+    background-color: white;     /* Fundo branco (contraste com a face1 escura) */
+    display: flex;               /* Ativa Flexbox */
+    flex-direction: column;      /* Organiza o conteúdo em coluna */
+    justify-content: center;     /* Centraliza o conteúdo verticalmente */
+    align-items: center;         /* Centraliza o conteúdo horizontalmente */
+    box-sizing: border-box;      /* Inclui padding e border no cálculo da largura/altura total */
+    padding: 20px;               /* Espaçamento interno de 20px em todos os lados (dá fôlego ao texto) */
+    transition: 0.5s;            /* Animação suave de 0.5 segundos */
+    transform: translateY(-100px);/* POSIÇÃO INICIAL: desloca a face 100 pixels para CIMA */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8); /* Sombra: X=0, Y=20px, desfoque=50px, preta com 80% opacidade */
+}
+
+/* EFEITO HOVER: quando o mouse passar sobre o card, a face2 sobe para encontrar a face1 */
+.card:hover .face2{
+    transform: translateY(0);    /* Remove o deslocamento vertical, trazendo a face para Y=0 (posição original) */
+}
+/* ==========================================================================
+   CAIXA QUE CONTÉM A IMAGEM E O TÍTULO H3
+   ========================================================================== */
+   .imgbox{
+    opacity: 0.2;                /* OPACIDADE INICIAL: 20% (imagem e título começam BEM APAGADOS/TRANSPARENTES) */
+    transition: 0.5s;            /* Mudança de opacidade será animada por 0.5 segundos (efeito fade suave) */
+}
+
+/* EFEITO HOVER: quando o mouse passa sobre o card, o conteúdo da imgbox fica totalmente visível */
+.card:hover .imgbox{
+    opacity: 1;                  /* OPACIDADE TOTAL: 100% (imagem e título ficam completamente nítidos) */
+}
+
+
+/* ==========================================================================
+   ESTILIZAÇÃO ESPECÍFICA DA IMAGEM DENTRO DA FACE 1
+   ========================================================================== */
+.face1 img{
+    width: 100px;                /* Define largura fixa de 100px para a imagem (altura ajusta automaticamente) */
+}
+
+
+/* ==========================================================================
+   ESTILIZAÇÃO DO TÍTULO (H3) - "DESIGN"
+   ========================================================================== */
+h3{
+    margin: 10px 0 0;            /* Margem: 10px em cima, 0 nas laterais e 0 embaixo */
+    padding: 0;                  /* Remove qualquer espaçamento interno padrão */
+    color: white;                /* Texto na cor branca (contrasta com fundo escuro da face1) */
+    text-align: center;          /* Centraliza o texto horizontalmente */
+    font-size: 25px;             /* Tamanho da fonte: 25 pixels (bem grande e destacado) */
+}
+
+
+/* ==========================================================================
+   ESTILIZAÇÃO DO PARÁGRAFO (TEXTO LOREM IPSUM)
+   ========================================================================== */
+p{
+    margin: 0;                   /* Remove a margem padrão do parágrafo */
+    padding: 0;                  /* Remove o padding padrão do parágrafo */
+}
+
+
+/* ==========================================================================
+   ESTILIZAÇÃO DO LINK/BOTÃO "READ MORE"
+   ========================================================================== */
+a{
+    margin: 15px 0 0;            /* Margem superior de 15px (afasta do parágrafo) */
+    display: inline-block;       /* Permite definir largura/altura/padding, mas NÃO quebra a linha */
+    text-decoration: none;       /* Remove o sublinhado padrão dos links */
+    font-weight: 900;            /* Peso da fonte: 900 = negrito EXTREMO (mais grosso possível) */
+    color: #777;                 /* Cor do texto: cinza médio */
+    padding: 5px;                /* Espaçamento interno de 5px em todos os lados */
+    border: 1px solid #777;      /* Borda sólida de 1 pixel na cor cinza (#777) */
+}
+
+/* EFEITO HOVER: quando o mouse passa SOBRE O BOTÃO (não sobre o card inteiro) */
+a:hover{
+    background-color: #777;      /* Fundo muda para cinza médio (a mesma cor da borda) */
+    color: white;                /* Texto muda para BRANCO (criando contraste) */
+}
